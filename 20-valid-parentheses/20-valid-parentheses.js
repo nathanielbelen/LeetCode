@@ -2,14 +2,14 @@
  @param {string} s
  @return {boolean}
 */
-var isValid = function(s) {
+var isValid = function (s) {
   let open = [];
   for (let i = 0; i < s.length; i++) {
-    if (isOpen(s[i])) {
-      open.unshift(s[i])
-    } else if (isClosed(s[i])) {
+    if (s[i] === '(' || s[i] === '{' || s[i] === '[') {
+      open.unshift(s[i]);
+    } else if (s[i] === ')' || s[i] === '}' || s[i] === ']') {
       if (isMatching(s[i], open[0])) {
-        open.shift()
+        open.shift();
       } else {
         return false;
       }
@@ -20,50 +20,26 @@ var isValid = function(s) {
   } else {
     return false;
   }
-}
-
-let isClosed = (char) => {
-  switch (char) {
-    case ')':
-    case ']':
-    case '}':
-      return true;
-    default: 
-      return false;
-  }
-}
-
-let isOpen = (char) => {
-  switch (char) {
-    case '(':
-    case '{':
-    case '[':
-      return true;
-    default:
-      return false;
-  }
-}
+};
 
 let isMatching = (closed, open) => {
-  if (isClosed(closed)) {
-    if (closed === ')') {
-      if (open !== '(') {
-        return false;
-      }
-      return true;
-    };
-    if (closed === ']') {
-      if (open !== '[') {
-        return false;
-      }
-      return true;
+  if (closed === ')') {
+    if (open !== '(') {
+      return false;
     }
-    if (closed === '}') {
-      if (open !== '{') {
-        return false;
-      }
-      return true;
+    return true;
+  }
+  if (closed === ']') {
+    if (open !== '[') {
+      return false;
     }
+    return true;
+  }
+  if (closed === '}') {
+    if (open !== '{') {
+      return false;
+    }
+    return true;
   }
   return false;
-}
+};
