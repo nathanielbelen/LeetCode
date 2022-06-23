@@ -4,6 +4,9 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
+    if (s.length !== t.length) {
+        return false;
+    }
     const arr1 = s.split('');
     const arr2 = t.split('');
     const map = {};
@@ -16,15 +19,9 @@ var isAnagram = function(s, t) {
         if (!map[e]) {
             return false;
         }
-        map[e]--
-    }
-    
-    for (let letter in map) {
-        if (map[letter]) {
-            return false;
-        }
+        map[e]--;
     }
     
     return true;
-    //return s.split('').sort().join() === t.split('').sort().join();
+
 };
