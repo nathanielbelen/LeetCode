@@ -6,7 +6,6 @@
 var topKFrequent = function(nums, k) {
     let map = {};
     nums.forEach((num) => {
-        console.log(num.toString())
         if (map[num] === undefined) {
             map[num] = 0;
         } else {
@@ -21,7 +20,6 @@ var topKFrequent = function(nums, k) {
     frequency.sort(function(a, b) {
         return b[1] - a[1]
     })
-    console.log(frequency)
     answer = [];
     for (let i = 0; i < k; i++) {
         answer.push(parseInt(frequency[i]));
