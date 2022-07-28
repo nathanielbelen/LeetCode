@@ -19,7 +19,6 @@ var maxDepth = function(root) {
     let maxDepth = 0;
     while (queue.length) {
         curr = queue.shift();
-        console.log(curr)
         if (curr.node !== null) {
              if (curr.node.left !== null) {
                 queue.push({node: curr.node.left, depth: curr.depth + 1});
