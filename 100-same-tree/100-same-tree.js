@@ -14,6 +14,7 @@
 var isSameTree = function(p, q) {
     let identical = true;
     const search = (node1, node2) => {
+        
         if ((!node1 && node2) || (node1 && !node2)) {
             identical = false;
             return;
@@ -23,13 +24,16 @@ var isSameTree = function(p, q) {
             return
         }
         
-        else if (node1.val !== node2.val) {
+        search(node1.left, node2.left);
+        search(node1.right, node2.right);
+        
+        if (node1.val !== node2.val) {
             identical = false;
             return
         }
-        search(node1.left, node2.left);
-        search(node1.right, node2.right);
+        
         return;
+        
     };
     
     search(p, q);
