@@ -25,18 +25,5 @@ var invertTree = function(root) {
             queue.push(curr.left, curr.right);   
         }
     }
-
     return root;
 };
-
-// while is not empty
-// given node
-// add left to holder
-// node left = node right
-// node right = holder
-// add left and right to queue
-// pop off queue
-// set current to be popped value
-// restart queue
-
-// return head
