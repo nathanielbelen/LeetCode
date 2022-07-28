@@ -10,6 +10,7 @@
  * @param {TreeNode} root
  * @return {number}
  */
+
 var maxDepth = function(root) {
     const queue = [];
     if (root !== null) {
@@ -29,21 +30,5 @@ var maxDepth = function(root) {
         }
         maxDepth = curr.depth > maxDepth ? curr.depth : maxDepth;
     }
-    
     return maxDepth;
 };
-
-
-
-// root
-// queue array = [[root, 1]]
-// current node 
-// current depth = tuple depth
-// maxdepth
-
-// while queue is not empty,
-
-//     if left is not null, add to queue as tuple with node and curdepth+1
-//     if right is not null, add to queue as tuple with node and curdepth+1
-//     if current depth > maxdepth, change maxdepth
-// return maxdepth
