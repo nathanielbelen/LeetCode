@@ -14,18 +14,12 @@
 var isSubtree = function(root, subRoot) {
     exists = false;
 
-    function dfs(node) {
-        if (!node) return;
-
+    function search(node) {
+        if (!node) return false;
         if (node.val === subRoot.val) {
-            if (compare(node, subRoot)) {
-                exists = true;
-                return
-            }
+            if (compare(node, subRoot)) return true;
         }
-
-        dfs(node.left)
-        dfs(node.right)
+        return search(node.left) || search(node.right)
     }
 
     function compare(node, subnode) {
@@ -35,6 +29,5 @@ var isSubtree = function(root, subRoot) {
         return compare(node.left, subnode.left) && compare(node.right, subnode.right)
     }
     
-    dfs(root);
-    return exists;
+    return search(root)
 };
