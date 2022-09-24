@@ -6,8 +6,8 @@ var longestConsecutive = function(nums) {
     let numbers = new Set(nums)
     let maxScore = 0;
     for (let num of numbers) {
-        let score = 0;
-        let counter = 0
+        let score = 1;
+        let counter = 1
         if (numbers.has(num - 1)) {
             continue;
         }
