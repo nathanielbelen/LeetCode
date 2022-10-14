@@ -10,14 +10,20 @@
  * @return {ListNode}
  */
 var deleteMiddle = function(head) {
-    let nodes = [head];
-    let curr = head;
-    while (curr.next) {
-        nodes.push(curr.next);
-        curr = curr.next;
+    // count nodes in list
+    if (head.next === null) return null;
+    let counter = 0;
+    let pass1 = head;
+    let pass2 = head;
+    while (pass1) {
+        counter++
+        pass1 = pass1.next;
     }
-    if (nodes.length === 1) return null;
-    let middle = Math.ceil((nodes.length - 1)/2)
-    nodes[middle-1].next = nodes[middle + 1] || null;
-    return head;
+    let middle = Math.floor(counter/2)
+    // counter should have counted all the nodes by this point
+    for (let i = 0; i < middle - 1; i++) {
+        pass2 = pass2.next;
+    }
+    pass2.next = pass2.next.next
+    return head
 };
